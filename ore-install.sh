@@ -37,6 +37,10 @@ case $choice in
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         nvm install node # 安装最新版本的 Node.js 和 npm
         npm install pm2@latest -g
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
         ;;
     5)
         echo "创建 Ore 矿工运行脚本..."
