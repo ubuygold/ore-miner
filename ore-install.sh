@@ -17,11 +17,13 @@ case $choice in
     1)
         echo "正在安装 Rust 和 Cargo..."
         curl https://sh.rustup.rs -sSf | sh
+        source ~/.bashrc
         ;;
     2)
         echo "正在安装 Solana CLI..."
         sh -c "$(curl -sSfL https://release.solana.com/v1.18.4/install)"
         echo "正在生成 Solana 密钥对..."
+        export PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
         solana-keygen new
         ;;
     3)
@@ -56,7 +58,6 @@ case $choice in
         echo "创建 Ore 提取运行脚本..."
         read -p "请输入 Ore RPC 地址 [默认: ${default_rpc}]: " rpc
         rpc=${rpc:-$default_rpc}
-
         echo "#!/bin/bash" > ore_miner.sh
         echo "ore --rpc ${rpc} --keypair ~/.config/solana/id.json --priority-fee 500000 claim" >> ore_claimer.sh
         chmod +x ore_claimer.sh
