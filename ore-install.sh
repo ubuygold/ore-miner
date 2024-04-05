@@ -18,6 +18,7 @@ case $choice in
         echo "正在安装 Rust 和 Cargo..."
         curl https://sh.rustup.rs -sSf | sh
         source ~/.bashrc
+        echo "请运行 source .bashrc"
         ;;
     2)
         echo "正在安装 Solana CLI..."
@@ -28,6 +29,8 @@ case $choice in
         ;;
     3)
         echo "正在安装 Ore CLI..."
+        apt-get update
+        apt-get install build-essential
         cargo install ore-cli
         ;;
     4)
@@ -40,6 +43,7 @@ case $choice in
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        echo "请运行 source .bashrc"
 
         ;;
     5)
